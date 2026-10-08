@@ -1,0 +1,252 @@
+.wrap {
+  width: 100%;
+}
+
+.stage {
+  --pos: 52;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  border: 1px solid var(--line);
+}
+
+.drawing,
+.render {
+  position: absolute;
+  inset: 0;
+}
+
+.drawing {
+  background-color: #fff;
+  background-image:
+    linear-gradient(#e8ecf1 1px, transparent 1px),
+    linear-gradient(90deg, #e8ecf1 1px, transparent 1px),
+    linear-gradient(#f3f5f8 1px, transparent 1px),
+    linear-gradient(90deg, #f3f5f8 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -1px -1px;
+  --art-paper: #ffffff;
+}
+
+.render {
+  background: radial-gradient(90% 80% at 32% 28%, #fbfcfd 0%, #eef0f3 55%, #e3e6ea 100%);
+  clip-path: inset(0 0 0 calc(var(--pos) * 1%));
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stage[data-phase='intro'] .render {
+  transition: clip-path 1.8s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.stage[data-phase='intro'] .handle {
+  transition: left 1.8s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.stage[data-phase='idle'] .render {
+  transition: clip-path 0.25s var(--ease);
+}
+
+.stage[data-phase='idle'] .handle {
+  transition: left 0.25s var(--ease);
+}
+
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--pos) * 1%);
+  width: 0;
+  outline: none;
+}
+
+.handle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.5px;
+  width: 1px;
+  background: var(--red);
+}
+
+.grip {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid var(--red);
+  color: var(--red);
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.grip svg {
+  width: 20px;
+}
+
+.stage:hover .grip,
+.handle:focus-visible .grip {
+  background: var(--red);
+  color: #fff;
+}
+
+.handle:focus-visible .grip {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.tag {
+  position: absolute;
+  top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.tagLeft {
+  left: 18px;
+}
+
+.tagRight {
+  right: 18px;
+}
+
+.finishName {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.titleBlock {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: grid;
+  border: 1px solid var(--art-ink);
+  background: #fff;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  min-width: 210px;
+}
+
+.titleBlock div {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+}
+
+.titleBlock div + div {
+  border-top: 1px solid var(--art-ink);
+}
+
+.titleBlock dt {
+  padding: 7px 8px;
+  color: var(--ink-3);
+  border-right: 1px solid var(--art-ink);
+}
+
+.titleBlock dd {
+  padding: 7px 8px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding-top: 16px;
+}
+
+.controlsLabel {
+  font-size: 14px;
+  color: var(--ink-3);
+}
+
+.controlsLabel a {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.controlsLabel a:hover {
+  color: var(--red);
+}
+
+.controlsLabel :global(.code) {
+  font-weight: 400;
+  color: var(--ink-3);
+  margin-left: 4px;
+}
+
+.finishes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.finishes button {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-3);
+  padding: 4px 0;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+.finishes button:hover {
+  color: var(--ink);
+}
+
+.finishes button[aria-pressed='true'] {
+  color: var(--ink);
+  border-bottom-color: var(--red);
+}
+
+.view {
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line-strong);
+  transition: border-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.view:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+@media (max-width: 640px) {
+  .titleBlock {
+    display: none;
+  }
+  .view {
+    display: none;
+  }
+  .grip {
+    width: 34px;
+    height: 34px;
+  }
+}

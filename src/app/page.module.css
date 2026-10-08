@@ -1,0 +1,523 @@
+/* Hero */
+
+.hero {
+  padding-block: clamp(32px, 5vw, 72px) clamp(64px, 7vw, 104px);
+  border-bottom: 1px solid var(--line);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: center;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heroTitle {
+  margin-top: 22px;
+  max-width: 7.5em;
+}
+
+.heroLead {
+  margin-top: 28px;
+  max-width: 27em;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin-top: 36px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0;
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+  width: 100%;
+  max-width: 420px;
+}
+
+.stats div {
+  padding: 14px 20px 0 0;
+}
+
+.stats div + div {
+  padding-left: 20px;
+  border-left: 1px solid var(--line);
+}
+
+.stats dt {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.stats dd {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.heroStage {
+  min-width: 0;
+}
+
+/* Categories */
+
+.cats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.cats > li {
+  background: #fff;
+}
+
+.catBig {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.cat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.catMedia {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(180deg, #f6f7f9 0%, #eef0f3 100%);
+  transition: background 0.3s var(--ease);
+}
+
+.catArt {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.5s var(--ease);
+}
+
+.catBig .catMedia {
+  flex: 1;
+  aspect-ratio: auto;
+  min-height: 360px;
+}
+
+.catBody {
+  position: relative;
+  padding: 20px 24px 26px;
+  display: grid;
+  gap: 6px;
+}
+
+.catIndex {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.catName {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.catBig .catName {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1;
+}
+
+.catText {
+  font-size: 15px;
+  color: var(--ink-2);
+  max-width: 30em;
+}
+
+.catMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.15s var(--ease), gap 0.2s var(--ease);
+}
+
+.cat:hover .catArt {
+  transform: scale(1.04);
+}
+
+.cat:hover .catMore {
+  color: var(--red);
+  gap: 12px;
+}
+
+/* Featured */
+
+.rowHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(32px, 4vw, 52px);
+}
+
+.featured {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.featured :global(.tile) {
+  background: #fff;
+}
+
+/* Finishes */
+
+.finishes {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.finish {
+  display: block;
+}
+
+.finishTile {
+  aspect-ratio: 192 / 340;
+}
+
+.finishTile svg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.5s var(--ease);
+  transform-origin: 50% 20%;
+}
+
+.finish:hover .finishTile svg {
+  transform: rotate(-8deg);
+}
+
+.finishCode {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+  letter-spacing: 0.06em;
+}
+
+.finishName {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 2px;
+}
+
+.finishText {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-top: 6px;
+  line-height: 1.45;
+}
+
+/* Anatomy */
+
+.anatomy {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(32px, 4vw, 64px);
+  align-items: center;
+}
+
+.anatomyArt {
+  background-color: #fff;
+  background-image:
+    linear-gradient(#edf0f4 1px, transparent 1px),
+    linear-gradient(90deg, #edf0f4 1px, transparent 1px);
+  background-size: 24px 24px;
+  border: 1px solid var(--line);
+  padding: clamp(8px, 2vw, 24px);
+  --art-paper: #ffffff;
+}
+
+.anatomyArt svg {
+  width: 100%;
+  height: auto;
+}
+
+.parts {
+  display: grid;
+  border-top: 1px solid var(--ink);
+}
+
+.parts li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.partNo {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1.2px solid var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.partName {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.partText {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+/* Doors */
+
+.doors {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.door {
+  padding: 28px 24px 8px;
+  border-right: 1px solid var(--line);
+}
+
+.door:first-child {
+  padding-left: 0;
+}
+
+.door:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.doorArt {
+  padding: 8px 12px 0;
+  --art-paper: #ffffff;
+}
+
+.doorArt svg {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  margin-inline: auto;
+}
+
+.doorName {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 24px;
+}
+
+.doorText {
+  font-size: 15px;
+  color: var(--ink-2);
+  margin-top: 8px;
+  min-height: 4.5em;
+}
+
+.doorItems {
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.doorItems a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.15s var(--ease);
+}
+
+.doorItems a:hover {
+  color: var(--red);
+}
+
+.doorItemType {
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--ink-3);
+  text-align: right;
+}
+
+/* CTA */
+
+.cta {
+  border-top: 1px solid var(--line);
+  padding-block: clamp(64px, 8vw, 120px);
+  background:
+    linear-gradient(90deg, var(--red) 0 6px, transparent 6px) no-repeat,
+    var(--bg-alt);
+}
+
+.ctaGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px 64px;
+  align-items: end;
+}
+
+.ctaTitle {
+  margin-top: 18px;
+}
+
+.ctaBody {
+  display: grid;
+  gap: 32px;
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+}
+
+/* Responsive */
+
+@media (max-width: 1180px) {
+  .finishes {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 36px;
+  }
+  .doors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .door:nth-child(2) {
+    border-right: 0;
+    padding-right: 0;
+  }
+  .door:nth-child(3) {
+    padding-left: 0;
+  }
+  .door:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+  .heroTitle {
+    max-width: 9em;
+  }
+  .stats {
+    margin-top: 40px;
+  }
+  .anatomy {
+    grid-template-columns: 1fr;
+  }
+  .featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 40px;
+  }
+}
+
+@media (max-width: 860px) {
+  .cats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .catBig {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+  .catBig .catMedia {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+  .ctaGrid {
+    grid-template-columns: 1fr;
+  }
+  .rowHead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats {
+    margin-top: 32px;
+  }
+  .catBody {
+    padding: 14px 14px 18px;
+  }
+  .catName {
+    font-size: 18px;
+  }
+  .catBig .catName {
+    font-size: 30px;
+  }
+  .catText {
+    display: none;
+  }
+  .catBig .catText {
+    display: block;
+  }
+  .finishes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 10px;
+  }
+  .finishText {
+    display: none;
+  }
+  .finishName {
+    font-size: 15px;
+  }
+  .featured {
+    gap: 32px 12px;
+  }
+  .doors {
+    grid-template-columns: 1fr;
+  }
+  .door,
+  .door:nth-child(n) {
+    padding: 28px 0 8px;
+    border-right: 0;
+    margin-top: 0;
+  }
+  .door + .door {
+    border-top: 1px solid var(--line);
+  }
+  .doorArt svg {
+    max-width: 200px;
+  }
+  .doorText {
+    min-height: 0;
+  }
+}
